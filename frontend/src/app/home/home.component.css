@@ -1,0 +1,241 @@
+body {
+  display: flex;
+}
+
+.turtlesim-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  justify-content: center;
+  height: auto;
+  background: #7d92b973;;
+  display: flex;
+  margin-top: 20px;
+}
+
+.control_container {
+  display: block;
+  margin: 15px;
+  width: 250px;
+}
+
+.jostic_container {
+  height: 250px;
+  border: 2px solid #000;
+  border-radius: 20px;
+  background: #5e70db;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 5px 0 5px 0;
+}
+
+.commands_container {
+  border: 2px solid #000;
+  border-radius: 20px;
+  background: #5e70db;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.data_velocity_container {
+  border: 2px solid #000;
+  border-radius: 20px;
+  background: #5e70db;
+  margin-top: 5px;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 5px 10px 5px 10px;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.jostic_key__badge {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  height: 30px;
+  width: 30px;
+  background-color: rgba(255, 68, 0, 0.424);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.con_status_container {
+  border: 2px solid #000;
+  border-radius: 20px;
+  background: #5e70db;
+  display: flex;
+  padding-left: 10px;
+}
+
+.data_velocity_title {
+  font-size: 25px;
+}
+
+.information_container {
+  padding-left: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.go_on_container {
+  border: 2px solid #000;
+  border-radius: 20px;
+  background: #5e70db;
+  margin-top: 5px;
+  display: block;
+  justify-content: center;
+  padding: 15px;
+}
+
+.go_on_imput {
+  max-width: 50px;
+  height: 25px;
+}
+
+.go_on_container_imput_block {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.go_on_container_imput {}
+
+.go_on_button_cntainer {
+  margin-top: 10px;
+}
+
+.go_on_button {
+  width: 100%;
+  height: 25px;
+}
+
+
+
+.commands_button {
+  height: 50px;
+  width: 50px;
+  border-radius: 30%;
+  margin: 5px;
+}
+
+.jostic_button {
+  height: 50px;
+  width: 50px;
+  border-radius: 30%;
+}
+
+.jostic_star {
+  color: blue;
+}
+
+.jostic_circle {
+  color: blue;
+}
+
+.commands_button_clear {}
+
+.commands_button_reset {}
+
+.conection_indicator_on {
+  color: green;
+}
+
+.conection_indicator_off {
+  color: orangered;
+}
+
+.viewer-container {
+  margin: 15px;
+  display: block;
+}
+
+.viewer-head {
+  background: #5e70db;
+  height: 50px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.viewer-body {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  background: #5e70db;
+}
+
+.viewer-canvas {
+  background: #a4cca4;
+  margin: 2%;
+  width: 96%;
+  height: 96%;
+
+}
+
+.commands_button_keyboard {}
+
+.commands_button_keyboard_pressed {
+  background: rgba(255, 68, 0, 0.698);
+  ;
+}
+
+#popup {
+  display: flex;
+  background: #2d10cee3;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  min-width: 300px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #00000067;
+  border-radius: 15px;
+  font-size: 30px;
+}
+
+#popup {
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+  transition: all .5s ease-in-out;
+}
+
+#popup.show {
+  visibility: visible;
+  z-index: 200;
+  opacity: 1;
+}
+
+.turtle {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  background-color: #2217b185;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.connect_button{
+  width: 150px;
+  margin: 5px;
+}
+.con_status_container p {
+  margin-left: 20px;
+}

@@ -1,0 +1,6 @@
+<launch>  
+    <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch"/>
+    <node name="listener_topic" pkg="ros_backend" type="turtlesim-ros-node-listener.py" output="screen"/>
+    <node name="catkin" pkg="turtlesim" type="turtlesim_node" output="screen"/>
+    <node name="service_status" pkg="ros_backend" type="turtlesim-ros-node-service.py" output="screen"/>
+</launch>

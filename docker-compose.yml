@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  backend:
+    build:
+        context: .
+        args:
+            - NODE_ENV=local
+        dockerfile: Dockerfile_be
+    ports:
+        - "9090:9090"
+    privileged: true 
+    environment:
+        - DISPLAY=$DISPLAY
+    volumes:
+        - /tmp/.X11-unix:/tmp/.X11-unix:rw 
+        - ~/.Xauthority:/root/.Xauthority  
+    command: roslaunch --screen ros_backend launcher.launch 
+    network_mode: "host"
+
+    
+  frontend:
+    build:
+        context: .
+        args:
+            - NODE_ENV=local
+        dockerfile: Dockerfile_fe
+    ports:
+        - "8080:80"

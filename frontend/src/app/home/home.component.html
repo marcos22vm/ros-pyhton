@@ -1,0 +1,149 @@
+<div class="turtlesim-container">
+
+  <div class="control_container">
+    <div class="con_status_container">
+      <i class="material-icons" [ngClass]="backend_connected  ? 'conection_indicator_on' : 'conection_indicator_off' "
+        style="font-size:48px;">compare_arrows</i>
+      <p *ngIf="backend_connected">Connected</p>
+      <button class="connect_button" *ngIf="!backend_connected" (click)="tryConnectToServer()">
+        Connect
+      </button>
+    </div>
+    <div class="go_on_container">
+
+      <div class="go_on_container_imput_block">
+        <div class="go_on_container_imput">
+          <label>X Value (0-600):</label>
+          <input id="number_x" #numbre_x class="go_on_imput" type="number" value="0" min="0" max="600">
+        </div>
+
+        <div class="go_on_container_imput">
+          <label>Y Value (0-600):</label>
+          <input id="number_y" #numbre_y class="go_on_imput" type="number" value="0" min="0" max="600">
+        </div>
+      </div>
+      <div class="go_on_button_cntainer">
+        <button class="go_on_button" (click)="moveTurtleToPoint()">
+          MOVE TO
+        </button>
+      </div>
+    </div>
+    <div class="jostic_container">
+      <div class="section">
+        <button class="jostic_button" (click)="senCommandTurtleSim('a')">
+          <i class="material-icons" style="font-size:36px">keyboard_arrow_left</i>
+        </button>
+        <span *ngIf="keyboard_listened" class="jostic_key__badge">Q</span>
+      </div>
+      <div class="section">
+        <button class="jostic_button" (click)="senCommandTurtleSim('w')">
+          <i class="material-icons" style="font-size:36px">keyboard_arrow_up</i>
+        </button>
+        <span *ngIf="keyboard_listened" class="jostic_key__badge">W</span>
+      </div>
+      <div class="section">
+        <button class="jostic_button" (click)="senCommandTurtleSim('d')">
+          <i class="material-icons" style="font-size:36px"> keyboard_arrow_right</i>
+        </button>
+        <span *ngIf="keyboard_listened" class="jostic_key__badge">E</span>
+      </div>
+      <div class="section">
+        <button class="jostic_button" (click)="senCommandTurtleSim('spinl')">
+          <i class="material-icons" style="font-size:36px">rotate_left</i>
+        </button>
+        <span *ngIf="keyboard_listened" class="jostic_key__badge">A</span>
+      </div>
+      <div class="section">
+        <button class="jostic_button" (click)="senCommandStopTurtleSim('pause')">
+          <i class="material-icons" style="font-size:36px">pause</i>
+        </button>
+        <span *ngIf="keyboard_listened" class="jostic_key__badge">c</span>
+      </div>
+      <div class="section">
+        <button class="jostic_button" (click)="senCommandTurtleSim('spinr')">
+          <i class="material-icons" style="font-size:36px">rotate_right</i>
+        </button>
+        <span *ngIf="keyboard_listened" class="jostic_key__badge">D</span>
+      </div>
+      <div class="section">
+        <button class="jostic_button jostic_circle" (click)="senCommandTurtleSim('draw_circle')">
+          <i class="material-icons" style="font-size:36px"> blur_circular</i>
+        </button>
+        <span *ngIf="keyboard_listened" class="jostic_key__badge">N</span>
+      </div>
+      <div class="section">
+        <button class="jostic_button" (click)="senCommandTurtleSim('s')">
+          <i class="material-icons" style="font-size:36px">keyboard_arrow_down</i>
+        </button>
+        <span *ngIf="keyboard_listened" class="jostic_key__badge">S</span>
+      </div>
+      <div class="section">
+        <button class="jostic_button jostic_star" (click)="senCommandTurtleSim('draw_star')">
+          <i class="material-icons" style="font-size:36px">star</i>
+          
+        </button>
+        <span *ngIf="keyboard_listened" class="jostic_key__badge">M</span>
+      </div>
+    </div>
+
+    <div class="commands_container">
+      <div class="section">
+        <button class="commands_button commands_button_clear" (click)="senCommandStopTurtleSim('clear')">
+          clear
+        </button>
+        <span *ngIf="keyboard_listened" class="jostic_key__badge">z</span>
+      </div>
+      <div class="section">
+        <button class="commands_button commands_button_reset" (click)="senCommandStopTurtleSim('reset')">
+          reset
+        </button>
+        <span *ngIf="keyboard_listened" class="jostic_key__badge">x</span>
+      </div>
+      <div class="section">
+        <button [ngClass]="keyboard_listened ? 'commands_button_keyboard_pressed' : '' "
+          class="commands_button commands_button_keyboard" (click)="changeStateKeboardListen()">
+          <i class="material-icons" style="font-size:36px">keyboard</i>
+        </button>
+
+      </div>
+    </div>
+
+    <div class="data_velocity_container">
+      <label class="data_velocity_title"><b>Positions</b></label>
+      <div class="information_container">
+        <label>Position X: <b>{{canvas_x | number : '1.2-2'}}</b></label>
+        <label>Position Y: <b>{{canvas_with-canvas_y*2 | number : '1.2-2'}}</b></label>
+        <label>Position Z: <b>{{canvas_theta | number: '1.1-1'}}°</b></label>
+      </div>
+      <label class="data_velocity_title"><b>Speed</b></label>
+      <div class="information_container">
+        <label>Linear X: <b>{{turtle_speed_linear_x | number : '1.2-2'}}</b></label>
+        <label>Linear Y: <b>{{turtle_speed_linear_y | number : '1.2-2'}}</b></label>
+        <label>Angular Z: <b>{{turtle_speed_angular_z | number : '1.2-2'}}</b></label>
+      </div>
+
+    </div>
+  </div>
+  
+  <div class="viewer-container">
+
+
+    <div class=" viewer-head">
+      <div>TURTLE VIEWER</div>
+    </div>
+    <div class="viewer-body">
+      
+      <i class="material-icons turtle"  
+  [style.top.px]="turtle_y*2-15" 
+  [style.left.px]="turtle_x-12"
+  [style.transform]="'rotate(' + (canvas_theta ? -canvas_theta : 0) + 'deg)'"
+  >	arrow_forward</i>
+
+      <div id="popup" [ngClass]="show_popup ? 'show' : ''">
+        <div>{{popup_message}} </div>
+      </div>
+      <canvas #canvas class="viewer-canvas"></canvas>
+    </div>
+  </div>
+
+</div>

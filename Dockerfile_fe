@@ -1,0 +1,27 @@
+#
+# Copy code and copile
+#
+FROM node:14-alpine as node
+WORKDIR /app
+
+COPY ./frontend/src/ ./src/
+COPY ./frontend/nginx ./nginx/
+COPY ./frontend/angular.json .
+COPY ./frontend/karma.conf.js .
+COPY ./frontend/package.json .
+COPY ./frontend/package-lock.json .
+COPY ./frontend/tsconfig.app.json .
+COPY ./frontend/tsconfig.json .
+COPY ./frontend/tsconfig.spec.json .
+COPY ./frontend/tslint.json .
+
+
+RUN npm install
+RUN npm run build --prod
+#
+# Copy compiled code on NGINX image
+#
+FROM nginx:alpine
+
+COPY --from=node ./app/nginx/default.conf /etc/nginx/conf.d
+COPY --from=node /app/dist/angular-ros-web-server /usr/share/nginx/html
